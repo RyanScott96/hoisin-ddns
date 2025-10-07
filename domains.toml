@@ -1,0 +1,5 @@
+# Example
+# [[domain]]
+# id = "12345" # note: id can be obtained by running the list command
+# name = "test"
+# domain = "example.com"
