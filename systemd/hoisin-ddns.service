@@ -1,0 +1,10 @@
+[Unit]
+Description="DDNS Client for Porkbun Domain Registrar"
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hoisin-ddns update -c /etc/hoisinddns/domains.toml
+
+[Install]
+WantedBy=multi-user.target
