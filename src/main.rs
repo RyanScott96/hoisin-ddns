@@ -20,7 +20,6 @@ async fn main() -> Result<()> {
     dotenv::dotenv().ok();
 
     let args = cli::Args::parse();
-    let config = Config::read(&args.config_path)?;
 
     let client = reqwest::Client::builder()
         .https_only(true)
@@ -44,6 +43,7 @@ async fn main() -> Result<()> {
             }
         }
         cli::Command::UPDATE => {
+            let config = Config::read(&args.config_path)?;
             let record_type;
             let ipv4_result = Ipv4Addr::from_str(&ping.ipaddress);
             let ipv6_result = Ipv6Addr::from_str(&ping.ipaddress);
