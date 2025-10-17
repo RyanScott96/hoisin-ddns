@@ -27,7 +27,6 @@ async fn main() -> Result<()> {
         .build()?;
 
     let ping = ping(&client).await?;
-    println!("INFO: Ping! {}", ping.ipaddress);
 
     match args.command {
         cli::Command::LIST { domain } => {
@@ -69,7 +68,9 @@ async fn main() -> Result<()> {
                 update_record(&record.domain, update, &client).await?;
             }
         }
-        cli::Command::PING => {}
+        cli::Command::PING => {
+            println!("Ping! {}", ping.ipaddress);
+        }
     };
 
     Ok(())
